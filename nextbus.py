@@ -126,6 +126,11 @@ def showOne(record,interval):
 		display(str(record[0]),numMode=0)
 		display(str(record[1]),numMode=1)
 
+def showHelp():
+	print "Usage: \n %s stopCode" % __file__
+	print "Please find Stop Code on www.adelaidemetro.com.au"
+	exit(0)
+
 def mainLoop(): 	
 	logfile = __file__.replace(".py",".log")
 	log = open(logfile,'w+')
@@ -147,5 +152,7 @@ def mainLoop():
 			showOne(record,interval)
 
 if __name__ == "__main__":
+	if len(sys.argv) != 2:
+		showHelp()
 	mainLoop()
 	GPIO.cleanup()
