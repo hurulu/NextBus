@@ -127,7 +127,7 @@ def showOne(record,interval):
 		display(str(record[1]),numMode=1)
 
 def mainLoop(): 	
-	logfile = __file__.replace("py","log")
+	logfile = __file__.replace(".py",".log")
 	log = open(logfile,'w+')
 	while 1:
 		try:
