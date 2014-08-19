@@ -146,7 +146,8 @@ def mainLoop():
 			continue
 		interval = updateInterval / len(resultArr)
 		print resultArr
-		log.write("%s:\t%s\n" % (str(time.time()),str(resultArr)))
+		#log.write("%s:\t%s\n" % (str(time.time()),str(resultArr)))
+		log.write("%s:\t%s\n" % (time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())),str(resultArr)))
 		log.flush()
 		for record in resultArr:
 			showOne(record,interval)
