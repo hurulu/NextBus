@@ -136,11 +136,19 @@ def mainLoop():
 	log = open(logfile,'w+')
 	while 1:
 		try:
-			resultArr = getData()
+			#Set working time 6:00 AM - 9:00 PM
+			tm_hour = time.localtime()[3]
+			if tm_hour > 21 or tm_hour <6:
+				log.write("%s: Not working time, sleep 60\n" % time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
+				log.flush()
+				time.sleep(60)
+				continue
+			else:
+				resultArr = getData()
 			
 		except:
 			print "Error : No results returned, sleep 60"
-			log.write("%s: No results returned, sleep 60\n" % str(time.time()))
+			log.write("%s: No results returned, sleep 60\n" % time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
 			log.flush()
 			time.sleep(60)
 			continue
